@@ -135,16 +135,17 @@ export const MedicineManagement = () => {
       <div className="flex flex-wrap justify-around">
         {medicines.map((medicine, i) => (
           <Card
-            maxW="md"
+            maxw="md"
             className="shadow-lg w-72 m-4 h-96  rounded-md"
             key={`${medicine.id}-${i}`}
           >
             <Heading className="text-center bg-[#3C5B6F] text-white">
-              {medicine.name}
+              Name: {medicine.name}
             </Heading>
             <img src={MedicineImg} alt="Avatar" className="m-auto" />
 
             <Stack mt="6" spacing="3">
+              <Text className="px-2">Medicine Id: {medicine.id}</Text>
               <Text className="px-2">Brand: {medicine.brand}</Text>
               <Text className="px-2">Description: {medicine.description}</Text>
               <Text className="px-2">Price: {medicine.price}</Text>

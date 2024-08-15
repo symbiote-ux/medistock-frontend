@@ -8,6 +8,7 @@ import { SignupPage } from './pages/SignupPage';
 import { LoginPage } from './pages/LoginPage';
 import { CustomerManagement } from './pages/CustomerManagement';
 import { MedicineManagement } from './pages/MedicineManagement';
+import { PurchaseManagement } from './pages/PurchaseManagement';
 
 const AppRoutes = () => {
   const { auth } = useContext(AuthContext);
@@ -23,6 +24,10 @@ const AppRoutes = () => {
     {
       path: '/medicines',
       element: auth ? <MedicineManagement /> : <Navigate to="/login" />,
+    },
+    {
+      path: '/purchases',
+      element: auth ? <PurchaseManagement /> : <Navigate to="/login" />,
     },
   ]);
   return routes;

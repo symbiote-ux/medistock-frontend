@@ -131,7 +131,7 @@ export const CustomerManagement = () => {
       <div className="flex flex-wrap justify-around">
         {customers.map((customer, i) => (
           <Card
-            maxW="md"
+            maxw="md"
             className="shadow-lg w-72 m-4 h-82  rounded-md"
             key={`${customer.firstName}-${i}`}
           >
@@ -141,6 +141,7 @@ export const CustomerManagement = () => {
             <img src={CustomerImg} alt="Avatar" className="m-auto" />
 
             <Stack mt="6" spacing="3">
+              <Text className="px-2">Customer Id: {customer.id}</Text>
               <Text className="px-2">Email: {customer.email}</Text>
               <Text className="px-2">Phone: {customer.phoneNumber}</Text>
               <Text className="px-2">Address: {customer.address}</Text>

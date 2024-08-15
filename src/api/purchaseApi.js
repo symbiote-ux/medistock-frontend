@@ -3,48 +3,36 @@ import { handleAxiosError } from './handleApiError';
 
 const API_URL = process.env.REACT_APP_BACKEND_API_URL;
 
-export const getMedicines = async () => {
+export const getPurchases = async () => {
   try {
-    const response = await axios.get(`${API_URL}/medicines`);
+    const response = await axios.get(`${API_URL}/purchases`);
     return response.data;
   } catch (error) {
     return handleAxiosError(error);
   }
 };
 
-export const getMedicineById = async (id) => {
+export const getPurchaseById = async (id) => {
   try {
-    const response = await axios.get(`${API_URL}/medicines/${id}`);
+    const response = await axios.get(`${API_URL}/purchases/${id}`);
     return response.data;
   } catch (error) {
     return handleAxiosError(error);
   }
 };
 
-export const addMedicine = async (MedicineData) => {
+export const addPurchase = async (PurchaseData) => {
   try {
-    const response = await axios.post(`${API_URL}/medicines`, MedicineData);
+    const response = await axios.post(`${API_URL}/purchases`, PurchaseData);
     return response.data;
   } catch (error) {
     return handleAxiosError(error);
   }
 };
 
-export const updateMedicine = async (id, MedicineData) => {
+export const deletePurchase = async (id) => {
   try {
-    const response = await axios.put(
-      `${API_URL}/medicines/${id}`,
-      MedicineData
-    );
-    return response.data;
-  } catch (error) {
-    return handleAxiosError(error);
-  }
-};
-
-export const deleteMedicine = async (id) => {
-  try {
-    const response = await axios.delete(`${API_URL}/medicines/${id}`);
+    const response = await axios.delete(`${API_URL}/purchases/${id}`);
     return response.data;
   } catch (error) {
     return handleAxiosError(error);
