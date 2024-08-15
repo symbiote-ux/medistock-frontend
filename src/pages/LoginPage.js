@@ -1,43 +1,23 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import AuthContext from '../context/AuthContext';
 
-export const Signup = () => {
+export const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const navigate = useNavigate();
+  const { login, error } = useContext(AuthContext);
 
-  const handleSignup = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    setError('');
-    try {
-      const response = await fetch('/auth/signup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, password }),
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        alert(data.message);
-        navigate('/login');
-      } else {
-        const errorData = await response.json();
-        setError(errorData.error);
-      }
-    } catch (err) {
-      setError('Signup failed. Please try again.');
-    }
+    await login({ username, password });
+    
   };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <h2 className="text-2xl font-bold mb-6 text-[#153448]">Sign Up</h2>
+      <h2 className="text-2xl font-bold mb-6 text-[#153448]">Login</h2>
       <form
         className="bg-white p-6 rounded-lg shadow-md w-full max-w-md"
-        onSubmit={handleSignup}
+        onSubmit={handleLogin}
       >
         {error && <p className="text-red-500 mb-4">{error}</p>}
         <div className="mb-4">
@@ -62,9 +42,9 @@ export const Signup = () => {
         </div>
         <button
           type="submit"
-          className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-700"
+          className="w-full bg-green-500 text-white py-2 rounded hover:bg-green-700"
         >
-          Sign Up
+          Login
         </button>
       </form>
     </div>
